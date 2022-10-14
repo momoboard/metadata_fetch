@@ -37,5 +37,12 @@ class OpenGraphParser with BaseMetadataParser {
       );
 
   @override
+  String? get logo {
+    List<String> icons = parseFavicons(_document);
+    if(icons.isEmpty) return image;
+    return icons.first;
+  }
+
+  @override
   String toString() => parse().toString();
 }

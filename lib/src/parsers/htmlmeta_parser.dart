@@ -28,5 +28,12 @@ class HtmlMetaParser with BaseMetadataParser {
       _document?.body?.querySelector('img')?.attributes.get('src');
 
   @override
+  String? get logo {
+    List<String> icons = parseFavicons(_document);
+    if(icons.isEmpty) return image;
+    return icons.first;
+  }
+
+  @override
   String toString() => parse().toString();
 }

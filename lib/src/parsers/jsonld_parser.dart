@@ -64,6 +64,13 @@ class JsonLdParser with BaseMetadataParser {
     return null;
   }
 
+  @override
+  String? get logo {
+    List<String> icons = parseFavicons(document);
+    if(icons.isEmpty) return image;
+    return icons.first;
+  }
+
   String? _imageResultToString(dynamic result) {
     if (result is List && result.isNotEmpty) {
       result = result.first;
